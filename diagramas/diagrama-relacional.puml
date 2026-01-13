@@ -1,0 +1,144 @@
+@startuml
+
+' Single Table Usuario - Administrador
+entity Usuario {
+    id <<generated>>
+    --
+    nombre <<nullable>>
+    apellido <<nullable>>
+    edad <<nullable>>
+    esContribuyente
+    esAdministrador <<discriminador>>
+}
+
+entity SolicitudDeEliminación {
+    id <<generated>>
+    --
+    hecho_id <<FK>>
+    fundamentacion
+    responsable_id <<FK>>
+}
+
+entity Hecho {
+    id <<generated>>
+    --
+    titulo
+    descripcion
+    categoria
+    latitud
+    longitud
+    provincia
+    fechaAcontecimiento
+    fechaCarga
+    origen <<enum>>
+    'Cambiar el nombre para diferenciarlo del de la clase??
+    usuario_id <<FK>> <<nullable>>
+    multimedia <<nullable>>
+}
+
+entity Coleccion {
+    id <<generated>>
+    --
+    titulo
+    descripcion
+    criterioPertenencia_id <<FK>>
+    criterioConsenso_id <<FK>>
+    fuente <<FK>>
+}
+
+entity Consenso {
+    consenso_id <<generated>>
+    --
+    tieneConsenso
+    algoritmoConsenso
+    proximaActualizacion
+}
+
+entity AlgoritmoConsenso {
+    id <<generated>>
+    --
+    algoritmoConsenso
+}
+
+entity Filtro {
+    algoritmoConseso_id <<generated>>
+    --
+    discriminador
+    categoria
+    fecha
+}
+
+entity FiltroPorFiltroCompuesto {
+    Filtro_id <<FK>>
+    Componente_id <<FK>>
+    --
+}
+
+entity Fuente {
+    id <<generated>>
+    --
+    tipoFuente -- priorizando la consulta polimorfica por el agregador
+    url --demo/metamapa
+    path -- estatica
+    ultimaModificacion -- estatica
+}
+
+entity FuenteDeAgregador {
+    agregador_id
+    fuente_id
+    -- igual que los filtros compuestos
+}
+
+entity SolicitudDeCambio {
+    solicitud_id
+    --
+    fuente_id
+    hechoACambiar_id
+    nuevoHecho_id
+    usuario_id
+    administrador_id
+}
+
+entity RechazoSolicitud {
+    solicitud_id
+    --
+    titulo
+    cantidad_de_veces
+    cantidad_de_spam
+}
+
+
+entity RechazoCambio {
+    id
+    --
+    cantidad
+    hecho_id (FK)
+}
+
+RechazoCambio |o--||Hecho
+Hecho }o--o| Usuario
+
+SolicitudDeEliminación }o-left-|| Hecho
+SolicitudDeEliminación }o--|| Usuario
+Hecho }o--o| Usuario
+
+Coleccion }o-up-|| Consenso
+Coleccion }o-l-|| Filtro
+
+Fuente ||--o{ FuenteDeAgregador
+FuenteDeAgregador }o--|| Fuente
+Fuente ||-right-o{Hecho
+Fuente ||-left-o{ SolicitudDeCambio
+
+Filtro ||-l-o{ FiltroPorFiltroCompuesto
+Filtro ||--o{ FiltroPorFiltroCompuesto
+
+Consenso }o-right-|| AlgoritmoConsenso
+
+Coleccion }o--|| Fuente
+
+SolicitudDeCambio }o--||Hecho
+SolicitudDeCambio }o--||Hecho
+SolicitudDeCambio }o--||Usuario
+
+@enduml

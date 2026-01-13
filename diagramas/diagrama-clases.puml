@@ -1,0 +1,259 @@
+@startuml MetaMapa
+
+class Usuario {
+    +(nombre)
+    +(apellido)
+    +(edad)
+    +esContribuyente
+    --
+    +contribuir()
+}
+
+class Administrador {
+    +nombre
+    +apellido
+    +edad
+}
+
+class SolicitudDeEliminacion {
+    +hecho
+    +fundamentacion
+    +responsable
+    -solicitudesDeEliminacionRepo
+    --
+    +aceptar(admin)
+    +rechhazar(admin)
+}
+
+interface SolicitudDeEliminacionRepo {
+    --
+    +nuevaSolicitud(solicitud)
+    +aceptarSolicitud(solicitud)
+    +rechazarSolicitud(solicitud)
+    +getPendientes()
+    +getAceptadas()
+    +getRechazadas()
+    +getRechazos(hecho)
+    +estaEliminado(hecho)
+    +hechosEliminados()
+}
+
+interface DetectorDeSpam {
+    --
+    +esSpam(solicitud)
+}
+
+
+class Coleccion {
+    +titulo
+    +descripcion
+    +id
+    -criterioDePertenencia
+    -consenso
+    -fuente
+    --
+    +hechos(filtro)
+    +hechos(busqueda, filtro)
+    +hechosConsensuados(filtro)
+    -streamFiltradaBase(filtro)
+}
+
+class Consenso {
+    -hechosConsensuados
+    -fuentesRepository
+    -AlgoritmoConsenso
+    --
+    +esConsensuado(hecho)
+}
+
+class NullConsenso {
+    --
+    +actualizar()
+    +esConsensuado(hecho)
+    +proximaActualizacion()
+}
+
+interface AlgoritmoConsenso {
+    +getHechosConsensuados(fuentes)
+}
+
+class Backup {
+    -fuenteDinamica
+    -pathArchivo
+    -frecuencia
+    --
+}
+
+class FuentesRepository {
+    +fuentes
+}
+
+abstract class Fuente {
+    --
+    +{abstract} obetenerHechos(filtro)
+    +obtenerHechos(busqueda, filtro)
+    -fullTextSearch(busqueda, hechos)
+}
+
+class Hecho {
+    +titulo
+    +descripcion
+    +categoria
+    +ubicacion
+    +fechaAcontecimiento
+    +fechaCarga
+    +origen
+    +(usuario)
+    +(multimedia)
+    --
+}
+
+enum Origen {
+    MANUAL
+    DATASET
+    CONTRIBUYENTE
+}
+
+interface Filtro {
+    +asPredicate()
+    +toQueryParam()
+}
+
+class FuenteEstatica {
+    -pathArchivo
+    --
+    -crearHechoDesdeFila()
+}
+
+class FuenteDinamica {
+    -hechos
+    -solicitudes
+    --
+    +aceptarSolicitudDeCambio(solicitudDeCambio)
+    +rechazarSolicitudDeCambio(solicitudDeCambio)
+    +agregarHecho(hecho)
+    +eliminarHecho(hecho)
+}
+
+interface HechoRepository {
+    +obtenerTodos()
+    +actualizar(hechoParaCambiar, hechoModificado)
+    +agregar(hecho)
+    +eliminar(hecho)
+    +fullTextSearch(texto)
+}
+
+interface SolicitudDeCambioRepository {
+    +crear(solicitudDeCambio)
+    +aceptar(solicitudDeCambio)
+    +rechazar(solicitudDeCambio)
+}
+
+class FuenteDemo {
+    -hechos
+    -url
+    -conexionDemo
+    -ultimaLlamada
+    --
+    -parseHecho(fila)
+}
+
+class FuenteMetaMapa {
+    -urlAPI
+    --
+    +obetenerHechosDeColeccion(coleccion, filtro)
+    +enviarSolicitudDeEliminacion(solicitud)
+}
+
+class CalendarizablesRepository {
+    +entidadesCalendarizadas
+    --
+    +getPendientesDeActualizacion()
+}
+
+interface Calendarizable {
+    +proximaActualizacion()
+    +actualizar()
+}
+
+class Agregador {
+    -fuentes
+    -hechos
+    -frecuencia
+}
+
+class RecolectorDeInformacion {
+    + objetosDeEstudio
+    + medioDePublicacion
+}
+
+interface ObjetoDeEstudio {
+    + //resultados// generarEstadisticas()
+}
+
+interface PublicadorDeResultados {
+    + exportar(//resultados//)
+}
+
+interface ResultadoEstadistico {
+  Map<String, String> infoExportable();
+}
+
+class Estadistico {
+    +provinciaConMayorCantidadDeHechosReportadosDeColeccion()
+    +categoriaConMasHechosReportados()
+    +provinciaConMasHechosReportadosDeUnaCategoria()
+    +horaPicoDeReporteDeUnaCategoria()
+    +cantidadDeSpamEnSolicitudesDeEliminacion()
+}
+
+Administrador -r-|> Usuario
+
+Coleccion --> Fuente
+Coleccion .r.> Filtro
+Coleccion --> Consenso
+
+Consenso -[hidden]l- Filtro
+
+Fuente -l-> "*" Hecho
+Fuente .r.>Filtro
+
+FuenteEstatica -u-|> Fuente
+FuenteMetaMapa -u-|> Fuente
+FuenteDemo -u-|> Fuente
+Agregador -u-|> Fuente
+FuenteDemo .u.|> Calendarizable
+FuenteDinamica -u-|> Fuente
+FuenteDinamica --> HechoRepository
+FuenteDinamica --> SolicitudDeCambioRepository
+
+Consenso ..|> Calendarizable
+Consenso -u-> FuentesRepository
+Consenso --* AlgoritmoConsenso
+NullConsenso --|> Consenso
+
+Agregador .u.|> Calendarizable
+
+CalendarizablesRepository -->"*" Calendarizable
+
+Hecho -l-> Origen
+
+SolicitudDeEliminacion --> Hecho
+SolicitudDeEliminacion -u-> Administrador
+
+SolicitudDeEliminacionRepo *-- SolicitudDeEliminacion
+DetectorDeSpam <.. SolicitudDeEliminacionRepo
+SolicitudDeEliminacionRepo <-- Coleccion
+
+Backup .u.|> Calendarizable
+Backup -u-> FuenteDinamica
+
+RecolectorDeInformacion ..|> Calendarizable
+RecolectorDeInformacion -->"*" ObjetoDeEstudio
+RecolectorDeInformacion --> PublicadorDeResultados
+RecolectorDeInformacion ..> ResultadoEstadistico
+PublicadorDeResultados ..> ResultadoEstadistico
+ObjetoDeEstudio ..> ResultadoEstadistico
+RecolectorDeInformacion -r-* Estadistico
+
+@enduml

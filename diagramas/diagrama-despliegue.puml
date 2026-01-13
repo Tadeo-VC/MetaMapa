@@ -1,0 +1,47 @@
+@startuml
+
+skinparam componentStyle uml1
+
+left to right direction
+
+node "Agregador" {
+    [Modelo] as modeloAgregador
+}
+
+node "FuenteEstatica" {
+
+    file Archivo
+
+    [Procesador] as procesadorFuenteEstatica
+
+    procesadorFuenteEstatica  -- Archivo
+
+}
+
+node "FuenteProxy" {
+
+    [Procesador] as procesadorFuenteProxy
+
+}
+
+node "FuenteDinamica" {
+
+    database "Hechos y Solicitudes" as DBFuenteDinamica
+
+    [Procesador] as procesadorFuenteDinamica
+
+    procesadorFuenteDinamica -- DBFuenteDinamica
+}
+
+ cloud "Servicio Externo / \n Instancia MetaMapa" as conexion
+ procesadorFuenteProxy -- conexion
+
+ cloud "API google" as api
+ modeloAgregador -u- api
+
+ modeloAgregador --"HTTP              " procesadorFuenteProxy
+ modeloAgregador --"HTTP     " procesadorFuenteDinamica
+ modeloAgregador --"HTTP              " procesadorFuenteEstatica
+
+
+@enduml

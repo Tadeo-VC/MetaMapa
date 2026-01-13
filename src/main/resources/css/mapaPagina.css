@@ -1,0 +1,424 @@
+@import url('global.css');
+
+
+.cuerpo-index {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccion-filtros {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 0.08rem solid rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 550;
+    color:var(--color-texto);
+    gap: 8.5rem;
+}
+
+.contenedor-hechos-mapaYcolecciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--color-secundario);
+    height: 100%;
+    overflow: hidden;
+}
+
+.contenedor-hechos {
+    display: flex;
+    flex-direction: column;
+    min-width: 17.5rem;
+    width: 25%;
+    height: 100%;
+    background-color: var(--color-secundario);
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-right: 0.08rem solid rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.hechos {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: min-content;
+    background-color: var(--color-secundario);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card-hecho {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 2%;
+    width: 97%;
+    height: fit-content;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    border: none;
+    gap: 8px;
+    padding: 8px;
+    box-shadow: 0.07rem 0.12rem rgb(0,0,0,0.1);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card-hecho:hover{
+    transform: scale(1.02,1.02);
+}
+
+.card-hecho p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 550;
+    color:var(--color-texto);
+}
+#titulo{
+    color:var(--color-texto-negrita);
+    border-bottom: solid 0.05rem var(--color-principal);
+    width: 90%;
+}
+
+.card-hecho-contenido {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    gap: 8px;
+    width: 100%;
+}
+
+.contenedor.vertical.colecciones.desplegable{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+.contenedor.vertical.infoADesplegarse.colecciones{
+    display: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 1000;
+    top: 86%;
+    left: 100%;
+    min-width: 13rem;
+    background-color: var(--color-secundario);
+    transform: translateX(-94%);
+    padding: 1.2rem 0.8rem 1.2rem 0.8rem;
+    border-radius: 1rem;
+    box-shadow: 0.09rem 0.15rem rgb(0,0,0,0.1);
+    border: 1px solid var(--color-principal);
+    max-height: 15rem;
+    overflow-y: auto;
+}
+.card-hecho-imagen-fecha {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    gap: 8px;
+}
+
+.card-hecho-titulo-subtitulo {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 8px;
+}
+
+.card-hecho-categoria {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.titulo-card-hecho{
+    width: 100%;
+    border-radius: 0.08rem;
+    text-align: center;
+    padding: 1.5%;
+}
+
+.card-hecho-contenedor-imagen {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.4rem;
+}
+
+.card-hecho-contenedor-imagen img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+.hecho:hover {
+    background-color: #e9fbe8;
+}
+
+.contenedor-mapa-colecciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    min-width: 0;
+}
+
+.contenedor-mapa {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secundario);
+    align-items: stretch;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.form-filtros {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.form-filtros button {
+    height: 2rem;
+}
+
+.form-filtros label {
+    margin: 3px;
+    border-bottom: 0;
+    width: fit-content;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    border-radius: 0.5rem;
+    height: fit-content;
+    width: 13%;
+    font-size: 0.2rem;
+    margin: 8px;
+    min-height: 3rem;
+}
+
+.filtro.buscador {
+    width: 20%;
+    padding: 0 8px;
+}
+
+.filtro label {
+    font-size: small;
+}
+
+.filtro input, select {
+    height: auto;
+    width: 80%;
+    cursor: pointer;
+}
+
+
+.contenedor-colecciones {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    background-color: var(--color-secundario);
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 0.08rem solid rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.contenedor-colecciones button {
+    width: 28%;
+    height: 50%;
+    min-width: 10rem;
+    min-height: 3.2rem;
+    border-radius: 0.8rem;
+    margin: 2%;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-colecciones button.activo{
+    border: 0.07rem solid var(--color-acento);
+    color: var(--color-acento);
+    background-color: var(--color-secundario);}
+
+.contenedor-colecciones button:hover {
+    transform: scale(1.1, 1.1);
+    border: 0.07rem solid var(--color-acento);
+    color: var(--color-acento);
+    background-color: var(--color-secundario);
+}
+
+.contenedor.vertical.precarga{
+    justify-content: center;
+    height: 80%;
+    width: 60%;
+}
+.contenedor.vertical.precarga p{
+    margin-bottom: 2rem;
+    padding: 3%;
+    text-align: center;
+    color: var(--color-texto-negrita);
+    font-size: 1.2rem;
+}
+
+.ping{
+    animation: caer 2s infinite ease-in-out alternate-reverse;
+    width: 5rem;
+    height: 5rem;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+
+}
+
+.mapita{
+    width: 7rem;
+    height: 7rem;
+    margin-top: 1rem;
+
+}
+
+.punto-mapa.maplibregl-marker.maplibregl-marker-anchor-center{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.punto-mapa.maplibregl-marker.maplibregl-marker-anchor-center:hover{
+    transform: scale(1.2,1.2);
+    color: var(--color-acento);
+    background-color: white;
+    border: 0.05rem solid var(--color-acento);
+}
+
+.coleccion-desplegada{
+    border: none;
+    background-color: var(--color-secundario);
+    color: var(--color-acento);
+    width: 100%;
+    cursor: pointer;
+    text-align: start;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 20px;
+
+}
+.coleccion-desplegada:hover{
+    color: var(--color-principal);
+    transform:scale(1.01,1.01);
+}
+
+#coleccionSeleccionada{
+    min-width: 13rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#coleccionSeleccionada:hover{
+    transform: scale(1,1);
+}
+
+#seleccionar-coleccion{
+    position: absolute;
+    display: flex;
+    width: 30%;
+    height: 30%;
+    background-color: var(--color-secundario);
+    z-index: 999;
+    border-radius: 1rem;
+    border: 3px solid var(--color-principal);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: var(--color-acento);
+    font-size: 32px;
+    font-weight: 600;
+    box-shadow: 0.2rem 0.2rem rgb(0,0,0,0.1);
+    animation: movimiento 1s alternate-reverse infinite ;
+}
+
+#overlay-mapa{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background-color: rgba(0, 0, 0, 0.56);
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes movimiento {
+    from {
+        transform: translateY(7px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+#seleccionar-coleccion p{
+    color: var(--color-acento);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+
+.filtro.consenso{
+    gap: 0.5rem;
+}
+
+#consenso-check{
+    width: 1.3rem;
+    height: 1.3rem;
+}

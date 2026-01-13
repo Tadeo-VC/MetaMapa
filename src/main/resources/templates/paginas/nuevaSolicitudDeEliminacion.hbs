@@ -1,0 +1,44 @@
+{{#partial "dependencias"}}
+    <link rel="stylesheet" href="/css/form.css">
+{{/partial}}
+
+{{#partial "contenido"}}
+    <section class="contenedor-form">
+        <div class="panel" style="justify-content: flex-start">
+
+            <div class="breadcrumbs">
+
+                <a href="/">
+                    Inicio
+                </a>
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2985/2985179.png ">
+
+                <a href="/solicitudesDeEliminacion/nueva?hecho={{hecho}}">
+                    Nueva solicitud de eliminación
+                </a>
+
+            </div>
+
+            <div class="contenedor-titulo-volver">
+                <h2 style="width: 70%">Crear Solicitud de Eliminación</h2>
+            </div>
+            <form class="form" hx-post="/solicitudesDeEliminacion" hx-target="#error-solicitud-eliminacion" style="height: 50%">
+
+                <label for="hecho">Hecho</label>
+                <p class="bold"> {{hecho}} </p>
+                <input type="hidden" id="hecho" name="hecho" value="{{hecho}}">
+
+                <label for="fundamentacion">Fundamentacion</label>
+                <input type="text" id="fundamentacion" name="fundamentacion" class="largo" placeholder="Motivos de eliminación"/>
+
+                <span id="error-solicitud-eliminacion" class="contenedor-mensaje-error" style="margin-bottom: 15px"></span>
+
+                <button class="boton secundario" type="submit">Subir</button>
+
+            </form>
+        </div>
+    </section>
+{{/partial}}
+
+{{> templates/layout}}

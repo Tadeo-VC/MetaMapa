@@ -1,0 +1,43 @@
+{{#if resultadoEstadistico}}
+    <div class="datos-extra">
+        <h2>Informacion relevante</h2>
+        <div class="extra provinciaConMasHechosReportados">
+            <p><b>Pronvica con mas hechos reportados de esta coleccion:</b> {{provinciaConMasHechosReportados}}
+            </p>
+        </div>
+
+
+    </div>
+    <div class="wrapper-tabla">
+        <table class="tabla colecciones">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Total de hechos</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each resultadoEstadistico}}
+                <tr>
+                    <td><p>{{fecha}}</p></td>
+                    <td><p>{{total_hechos}}</p></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+{{else}}
+
+        <!-- se podria poner condicionalmente otra imagen segun si no hay resultados o no hubo busqueda !-->
+    <div class="contenedor-sin-estadisticas">
+        <img src="https://cdn-icons-png.flaticon.com/128/4500/4500139.png">
+        <p><b>
+            {{#if noHayResultados}}
+                No hay resultados para esta busqueda
+            {{else}}
+                Realice una busqueda para ver las estadisticas
+            {{/if}}
+        </b></p>
+    </div>
+{{/if}}

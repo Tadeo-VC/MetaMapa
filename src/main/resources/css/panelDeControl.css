@@ -1,0 +1,357 @@
+
+
+.contenido-panel{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    gap: 32px;
+}
+
+.contenedor-cuerpo-index {
+    padding-top: 0;
+    gap: 0;
+    align-items: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: auto;
+    padding: 32px;
+    gap: 32px;
+}
+
+.breadcrumbs {
+    width: 100%;
+}
+
+.navegacion {
+    background: var(--color-secundario);
+    height: fit-content;
+    display:flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    padding: 0 16px;
+    border: solid 0.1rem var(--color-principal);
+}
+
+.navegacion h2{
+    color: var(--color-principal);
+    border-bottom:0.05rem solid var(--color-texto) ;
+    width: auto;
+}
+.navegacion p{
+    color: var(--color-acento);
+    display: inline-block;
+    width: max-content;
+}
+
+.navegacion p:hover{
+    color: var(--color-texto);
+}
+
+.navegacion a{
+    display: inline-block;
+    width: fit-content;
+}
+
+.contenido{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-secundario);
+    height: 100%;
+    width: 100%;
+}
+
+.link-seccion {
+    margin: 8px 0 8px 32px;
+    padding: 0 0 0 8px;
+    border: 0.1rem solid var(--color-secundario);
+    border-radius: 0.5rem;
+    width: fit-content;
+}
+
+.contenedor.cartas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.contenedor.carta{
+    color: var(--color-texto);
+    border: 0.05rem solid var(--color-principal);
+    background-color: var(--color-secundario);
+    width: 29%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 8px 8px 8px;
+    border-radius: 0.3rem;
+}
+
+.contenedor.carta:hover{
+    transform: scale(1,1);
+    cursor: auto;
+}
+
+.contenedor.carta.solicitud{
+    gap: 2rem;
+}
+
+.contenedor.carta.solicitud .contenedor.lateral{
+    width: 100%;
+}
+
+.contenedor.carta.solicitud form{
+    width: 100%;
+}
+
+.contenedor.carta.solicitud .card-solicitud-botones{
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card-solicitud-botones {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+}
+
+.contenedor.lateral.fuentes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    justify-content:flex-start;
+    gap: 1.6rem;
+    max-height: 5rem;
+    overflow-y: auto;
+    row-gap: 0;
+}
+
+.contenedor.fuente {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+}
+
+.contenedor.fuente label {
+    border: none;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+    width: auto;
+    display: flex;
+    gap: 0.6rem;
+    position: relative;
+}
+
+.contenedor.fuente label::before {
+    content: ' ';
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid var(--color-acento);
+    cursor: pointer;
+}
+
+.contenedor.fuente input[type="checkbox"]:checked + label::before{
+    background-color: var(--color-acento);
+    cursor: pointer;
+}
+
+/*CHANGO*/
+/* 5. Dibujar y dar color al CHECK (::after) */
+.contenedor.fuente label::after {
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s;
+    top: 3px;
+    left: 7px;
+    cursor: pointer;
+}
+
+.contenedor.fuente input[type="checkbox"]:checked + label::after {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.contenedor.fuente input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+.mensaje-fondo {
+    width: 100%;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+.form{
+    justify-content: flex-start;
+}
+
+.contenedor.lateral.logo-titulo{
+    animation: none;
+}
+
+.wrapper-tabla{
+    width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: scroll;
+    margin-top: 16px;
+}
+
+.tabla{
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,td{
+    padding: 0.5rem;
+}
+
+tr:nth-child(odd){
+    background-color: white;
+}
+
+th{
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.fundamentacion.solicitud{
+    width: 60%;
+}
+.titulo.solicitud{
+    width: 20%;
+}
+
+.columna.centrada{
+    text-align: center;
+}
+
+#aceptar image{
+}
+
+.boton-solicitud{
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: white;
+}
+
+.boton-solicitud img{
+    width: 2rem;
+    height: 2rem;
+    box-shadow: 0.08rem 0.13rem rgb(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+.boton-solicitud:hover{
+    transform: scale(1.1,1.1);
+    cursor:pointer;
+}
+
+.editar{
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    box-shadow: 0.08rem 0.13rem rgb(0, 0, 0, 0.1);
+}
+.editar:hover{
+    transform: scale(1.1,1.1);
+    cursor:pointer;
+}
+
+.contenedor-form{
+    align-items: flex-start;
+}
+
+.panel{
+    height: fit-content;
+    padding: 0;
+    box-shadow: 0 0;
+
+}
+
+.panel.tabla h2{
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+.panel.panelControl h2{
+    color: white;
+    background-color:var(--color-principal);
+}
+
+.contenedor-hecho{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.contenedor-info-hecho{
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-soli-hechos p,b{
+    margin-top: 0;
+}
+
+.boton.subir{
+    margin: 0;
+}
+
+.form.crear-coleccion label{
+    margin: 10px 0 6px 0;
+}

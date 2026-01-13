@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- (SPA) -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/modales.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/detalleHecho.css">
+    <script src="/js/app.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    {{#block "dependencias"}}
+    {{/block}}
+</head>
+<body>
+
+<header class="header">
+    <a href="/">
+        <div class="contenedor lateral logo-titulo">
+            <img class="logo" src="https://cdn-icons-png.flaticon.com/512/235/235861.png">
+            <h1 class="titulo-header">Metamapa</h1>
+        </div>
+    </a>
+    <div class="botones-header">
+        {{#if autenticado}}
+            {{> templates/headers/headerUsuario }}
+        {{else}}
+            {{> templates/headers/headerSinSesion }}
+        {{/if}}
+
+        <a class="enlace" href="/estadisticas">
+            <button class="boton linkHeader">
+                <img src="https://cdn-icons-png.flaticon.com/128/4314/4314921.png">
+                Estadisticas
+            </button>
+        </a>
+
+        <a href="/hechos/nuevo">
+            <button class="boton subir-hecho" >
+                <img src="https://cdn-icons-png.flaticon.com/512/10023/10023858.png">
+                Subir Hecho
+            </button>
+        </a>
+        {{#if autenticado}}
+            <div class="contenedor vertical perfil-info desplegable">
+                <button class="perfil">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3034/3034577.png">
+                </button>
+                <div class="contenedor vertical infoADesplegarse usuario">
+                    <div class="contenedor lateral info-usuario">
+                        <a href="/usuarios/{{usuario.usuario}}/perfil">
+                        <img class="img-perfil-deplegable" src="https://cdn-icons-png.flaticon.com/128/3034/3034577.png">
+                        <p >Perfil</p>
+                            <img class="img-perfil-deplegable"  src="https://cdn-icons-png.flaticon.com/128/13660/13660237.png">
+                        </a>
+                    </div>
+
+                    <div class="contenedor lateral info-usuario">
+                        <a href="/usuarios/sinSesion">
+                            <img class="img-perfil-deplegable"  src="https://cdn-icons-png.flaticon.com/128/8212/8212701.png">
+
+                        <p >Cerrar sesion</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</header>
+
+<main class="contenedor-cuerpo-index">
+    {{#block "contenido"}}
+    {{/block}}
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+:root {
+    --color-principal: #3f7857;
+    --color-secundario: #F5F7F9;
+    --color-acento: #66b3e1;
+    --color-texto: #706f6f;
+    --color-texto-negrita: #404040;
+
+    font: normal 1rem "Roboto Light", sans-serif;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin:  1rem 0 1rem 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0.75rem 0 0 0;
+}
+
+p {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 1rem 0 0 0;
+}
+
+p.bold {
+    font-weight: bold;
+}
+
+.boton{
+    cursor: pointer;
+    color: var(--color-secundario);
+    height: 2.5rem;
+    padding: 0 16px;
+    border: none;
+    width: auto;
+    border-radius:0.3rem;
+    background-color: var(--color-acento);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    box-shadow: 0.09rem 0.15rem rgb(0,0,0,0.1);
+    align-content: center;
+    transition: 0.45s;
+}
+
+
+.boton:hover{
+    transform: scale(1.08,1.08);
+    color: var(--color-acento);
+    background-color: white;
+    outline: 1px solid var(--color-acento);
+}
+
+.boton.secundario{
+    background-color: var(--color-principal);
+}
+
+.boton.eliminar{
+    background-color: grey;
+}
+
+.boton.terciario:hover{
+    color: var(--color-acento);
+    background-color: white;
+    outline: 1px solid var(--color-acento);
+}
+
+.boton.secundario:hover{
+    color: var(--color-acento);
+    background-color: white;
+    outline: 1px solid var(--color-acento);
+}
+
+.boton.terciario {
+    background-color: var(--color-texto);
+}
+
+.invisible{
+    visibility: hidden;
+    display: none;
+}
+
+.contenedor.lateral{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.contenedor.vertical{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 0 auto 0;
+    width: 100%;
+}
+
+/*.boton.subir{*/
+/*    width: 10%;*/
+/*}*/

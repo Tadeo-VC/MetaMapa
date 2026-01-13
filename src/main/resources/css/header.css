@@ -1,0 +1,33 @@
+@import url('global.css');
+
+.header-sin-sesion{
+    display: flex;
+    align-items: end;
+    gap: 16px;
+}
+
+.boton {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.boton img {
+    max-height: 1.3rem;
+    max-width: 1.3rem;
+}
+
+.linkHeader{
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.linkHeader:hover{
+    background-color: var(--color-principal);
+    color: var(--color-acento);
+    outline: none;
+    transform: scale(1.05,1.05);
+}

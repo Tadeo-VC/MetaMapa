@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/form.css">
+
+{{#partial "breadcrumbs"}}
+    <img src="https://cdn-icons-png.flaticon.com/512/2985/2985179.png">
+
+    <a href="/panelDeControl/fuentes/nuevaProxy">
+        Crear fuente proxy
+    </a>
+
+{{/partial}}
+
+{{#partial "seccion"}}
+    <section class="contenedor-form">
+        <div class="panel ">
+            <h2 style="height: auto;width: 70%">Crear fuente Proxy</h2>
+            <form class="form" style="width: 100%; height: fit-content" hx-post="/fuentes"
+                  hx-target="#error-crear-fuente">
+                <input type="hidden" id="tipo-hidden" name="tipoFuente" value="metamapa">
+
+                <label for="input-url-proxy">URL de la fuente proxy</label>
+
+                <input
+                        id="input-url-proxy"
+                        type="text"
+                        name="url"
+                        placeholder="URL de la API Metamapa"
+                >
+
+                <p>Las fuentes proxy se conectan a la URL de otra instancia de MetaMapa para traer sus hechos</p>
+
+                <span id="error-crear-fuente" class="contenedor-mensaje-error"></span>
+                <button class="boton subir" type="submit">Subir</button>
+            </form>
+        </div>
+    </section>
+{{/partial}}
+
+{{> templates/paginas/panelDeControl/panelDeControlLayout}}

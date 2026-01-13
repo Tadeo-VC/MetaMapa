@@ -1,0 +1,56 @@
+{{#partial "dependencias"}}
+    <link rel="stylesheet" href="/css/mapaPagina.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/panelDeControl.css">
+    <link rel="stylesheet" href="/css/estadisticas.css">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script src="/js/app.js"></script>
+{{/partial}}
+
+{{#partial "contenido"}}
+    <div class="cuerpo-index-estadisticas">
+
+        <nav class="seccion-estadisticas-header">
+
+            <div class="breadcrumbs">
+                <a href="/">
+                    Inicio
+                </a>
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2985/2985179.png ">
+
+                <a href="/estadisticas">
+                    Estadisticas
+                </a>
+
+                {{#block "breadcrumbs"}}{{/block}}
+            </div>
+
+
+            <div class="panel">
+                <h2>Seccion de Estadisticas</h2>
+            </div>
+            <div class="links-estadisticas links">
+                <a  href="/estadisticas/colecciones">
+                    <b class="link">Colecciones</b>
+                </a>
+                <a href="/estadisticas/categorias">
+                    <b class="link">Categorias</b>
+                </a>
+                {{#if esAdmin}}
+                    <a  href="/estadisticas/spam">
+                        <b class="link">Spam</b>
+                    </a>
+                {{/if}}
+            </div>
+
+        </nav>
+        <section class="contenedor-estadisticas-especificas">
+            {{#block "contenido-estadistico"}}
+
+            {{/block}}
+        </section>
+    </div>
+{{/partial}}
+
+{{> templates/layout}}
