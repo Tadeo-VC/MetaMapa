@@ -1,53 +1,56 @@
-# MetaMapa
+# MetaMapa – Data-Oriented System Design for Statistical Analysis
 
-Java · Javalin · Handlebars · Hibernate · MySQL · AWS · JWT · Domain-Driven Design
+MetaMapa es una plataforma open-source de mapeo colaborativo de información orientada a ONG y organismos públicos.
 
-MetaMapa es una plataforma open-source de mapeo colaborativo de información, pensada para ONG y organismos públicos. El proyecto fue desarrollado en equipo como trabajo académico para la materia Diseño de Sistemas de Información.
+Mi contribución se centró en el diseño del modelo de datos y la estructura necesaria para soportar la generación de métricas y análisis sobre datos operacionales.
 
-El objetivo del sistema es permitir la carga, gestión y visualización de información georreferenciada, facilitando la toma de decisiones y el análisis de datos en contextos sociales y públicos.
+---
 
-### Contexto del proyecto
+## Enfoque de datos
 
-Proyecto académico grupal
+El sistema fue diseñado no solo para gestionar información, sino para habilitar su explotación analítica.
 
-Materia: Diseño de Sistemas de Información
+- Modelé estructuras de datos considerando necesidades de análisis futuras  
+- Diseñé el módulo de estadísticas para permitir generación flexible de métricas  
+- Priorizé un esquema adaptable a nuevas variables analíticas sin rediseño  
 
-Enfoque: backend, diseño de dominio y arquitectura
+---
 
-Metodología de trabajo: iterativo–incremental
+## Modelado de datos
 
-Despliegue: AWS
+- Diseño del dominio aplicando principios de modelado orientados a análisis  
+- Estructuración de entidades para facilitar consultas estadísticas  
+- Separación de responsabilidades entre datos operacionales y analíticos  
 
-## Mi aporte al proyecto
+---
 
-Mi participación se centró principalmente en el diseño y desarrollo backend, con foco en modelado del dominio, arquitectura y calidad del diseño.
+## Transformación de datos
 
-Modelado del módulo de estadísticas aplicando Domain-Driven Design, priorizando cohesión, claridad del lenguaje ubicuo y flexibilidad evolutiva del dominio.
+- Implementé procesos de limpieza, estructuración y normalización de datos  
+- Preparé la información para su uso en consultas estadísticas  
+- Definí el flujo de datos desde su origen hasta su explotación analítica  
 
-Participación activa en el diseño conceptual del sistema y en la toma de decisiones funcionales y técnicas.
+---
 
-Implementación de vistas de estadísticas con enfoque en buenas prácticas de UX y diseño de dashboards.
+## Consultas y métricas
 
-Diseño manual del esquema de autenticación mediante tokens JWT firmados con java-jwt, evaluando riesgos y costos computacionales al evitar el cifrado de datos sensibles.
+- Desarrollo de consultas para generación de métricas sobre datos del sistema  
+- Validación del modelo mediante escenarios de análisis  
+- Soporte para cálculo de estadísticas en tiempo real  
 
-Definición de rutas REST y criterios de exposición de recursos.
-
-Trabajo colaborativo continuo: documentación, discusión de decisiones y revisión de avances en equipo.
+---
 
 ## Tecnologías utilizadas
 
-Backend: Java, Javalin, Hibernate
+- SQL / Modelado de datos  
+- Java · Hibernate · Javalin  
+- MySQL  
+- AWS  
 
-Frontend: Handlebars
+---
 
-Base de datos: MySQL
+## Contexto
 
-Arquitectura y diseño: Domain-Driven Design (DDD)
+Proyecto académico desarrollado en equipo para la materia Diseño de Sistemas de Información (UTN FRBA), bajo metodología iterativa.
 
-Autenticación: JWT (java-jwt)
-
-Infraestructura: AWS
-
-## Estado del proyecto
-
-El sistema fue desplegado en AWS y recibió una devolución destacada por el trabajo en equipo y la calidad del diseño y del modelado del dominio.
+El sistema fue desplegado en AWS y evaluado positivamente por la calidad del diseño y del modelo de datos.
