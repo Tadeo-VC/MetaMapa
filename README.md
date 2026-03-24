@@ -1,4 +1,4 @@
-# MetaMapa – Data-Oriented System Design for Statistical Analysis
+# MetaMapa 
 
 MetaMapa es una plataforma open-source de mapeo colaborativo de información orientada a ONG y organismos públicos.
 
