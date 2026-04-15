@@ -2,48 +2,37 @@
 
 MetaMapa es una plataforma open-source de mapeo colaborativo de información orientada a ONG y organismos públicos.
 
-Mi contribución se centró en el diseño del modelo de datos y la estructura necesaria para soportar la generación de métricas y análisis sobre datos operacionales.
+Mi contribución se centró en el diseño de la arquitectura backend, incluyendo el modelo de dominio, el sistema de autenticación y la capa de persistencia.
 
 ---
 
-## Enfoque de datos
+## Arquitectura Backend
 
-El sistema fue diseñado no solo para gestionar información, sino para habilitar su explotación analítica.
-
-- Modelé estructuras de datos considerando necesidades de análisis futuras  
-- Diseñé el módulo de estadísticas para permitir generación flexible de métricas  
-- Priorizé un esquema adaptable a nuevas variables analíticas sin rediseño  
+- Diseñé la arquitectura del sistema aplicando principios de Domain-Driven Design (DDD)  
+- Estructuré el dominio para soportar escalabilidad y evolución de funcionalidades  
+- Implementé procesos programados para la generación de estadísticas, priorizando flexibilidad para incorporar nuevas variables analíticas  
 
 ---
 
-## Modelado de datos
+## Autenticación y Seguridad
 
-- Diseño del dominio aplicando principios de modelado orientados a análisis  
-- Estructuración de entidades para facilitar consultas estadísticas  
-- Separación de responsabilidades entre datos operacionales y analíticos  
-
----
-
-## Transformación de datos
-
-- Implementé procesos de limpieza, estructuración y normalización de datos  
-- Preparé la información para su uso en consultas estadísticas  
-- Definí el flujo de datos desde su origen hasta su explotación analítica  
+- Implementé autenticación basada en JWT, gestionando la firma y validación de tokens  
+- Diseñé el flujo de autenticación, incluyendo manejo de sesiones y control de acceso  
 
 ---
 
-## Consultas y métricas
+## Persistencia y Modelado
 
-- Desarrollo de consultas para generación de métricas sobre datos del sistema  
-- Validación del modelo mediante escenarios de análisis  
-- Soporte para cálculo de estadísticas en tiempo real  
+- Diseñé la capa de persistencia utilizando Hibernate  
+- Evalué y apliqué distintas estrategias de mapeo de herencia  
+- Modelé entidades priorizando consistencia, mantenibilidad y eficiencia en el acceso a datos  
 
 ---
 
 ## Tecnologías utilizadas
 
-- SQL / Modelado de datos  
-- Java · Hibernate · Javalin  
+- Java · Javalin · Hibernate · REST  
+- JWT  
 - MySQL  
 - AWS  
 
@@ -53,4 +42,4 @@ El sistema fue diseñado no solo para gestionar información, sino para habilita
 
 Proyecto académico desarrollado en equipo para la materia Diseño de Sistemas de Información (UTN FRBA), bajo metodología iterativa.
 
-El sistema fue desplegado en AWS y evaluado positivamente por la calidad del diseño y del modelo de datos.
+El sistema fue desplegado en AWS y evaluado positivamente por la calidad de su diseño y arquitectura.
